@@ -41,6 +41,7 @@
   - [闭包的特性以及优缺点](#闭包的特性以及优缺点)
   - [箭头函数与普通函数的区别](#箭头函数与普通函数的区别)
   - [ES6 中箭头函数 VS 普通函数的 this 指向](#es6-中箭头函数-vs-普通函数的-this-指向)
+  - [ES6 class 和 ES5 函数的区别](#es6-class-和-es5-函数的区别)
   - [JS 实现对象（都是简单类型的值）的深拷贝，一行代码](#js-实现对象都是简单类型的值的深拷贝一行代码)
   - [JSON.parse(JSON.stringify(obj)) 实现深拷贝需要注意的问题](#jsonparsejsonstringifyobj-实现深拷贝需要注意的问题)
   - [Promise 是做什么的，有哪些API](#promise-是做什么的有哪些api)
@@ -891,6 +892,17 @@ console.log(obj.diameter()) // 20
 console.log(obj.perimeter()) // NaN
 ```
 
+## ES6 class 和 ES5 函数的区别
+
+> 本质上，ES6 的类只是 ES5 的构造函数的一层包装
+
+1. 与ES5不同，ES6 类和模块的内部默认就是严格模式，不存在遍历提升
+
+  ```js
+  new Foo(); // Reference Error
+  class Foo {}
+  ```
+
 ## JS 实现对象（都是简单类型的值）的深拷贝，一行代码
 
 ```js
@@ -1148,7 +1160,7 @@ Plugins（插件）可以用于执行范围更广的任务，包括打包、优�
 
 - arguments是一个伪数组，是当前函数的内置对象，存储所有的形参，有length属性，但是不能用数组的方法。
 - [...arguments] 扩展运算符的方式，拿取剩余参数
-- Array.prototype.slice.call(arguments);使用call 一个对象调用另一个函数的方法，slice切割数组并返沪一个新的数组
+- Array.prototype.slice.call(arguments);使用call 一个对象调用另一个函数的方法，slice切割数组并返回一个新的数组
 - [].slice.call() 因为[].slice === Array.prototype.slice
 - 遍历：arguments有length属性，所以，可以遍历arguments取出每一个元素，并放进新的数组中
   
@@ -1159,7 +1171,7 @@ Object.assign() //复制对象，创建一个新的对象
 Object.entries() //返回自身可枚举的[key,value]
 Object.keys()
 Object.values()
-Object.hasOwnProperty(key)//是否有这个属性 ttrue/false
+Object.hasOwnProperty(key)//是否有这个属性 true/false
 Object.getOwnPropertyNames() //取得对象自身可枚举的属性名
 //for in 对对象进行遍历，可以拿到自身以及原型链上的可枚举的属性
 Object.freeze()//冻结一个对象，不可修改，不可删除。不可添加新的属性
@@ -1181,7 +1193,7 @@ var str2 = 'jjjj'
 var str3 = 'kkkk'
 
 str.concat()//拼接
-str.includes()//判断字符串是否包含在另外啊一个字符串中
+str.includes()//判断字符串是否包含在另外一个字符串中
 str.indexOf()
 str.lastIndexOf()
 str.split() //按特定的符号分割成字符串数组！
@@ -1190,7 +1202,7 @@ str.toUpperCase() //转换成大写的形式
 str.trim()//去空格
 str.substring(start,end) // 截取字串，不含开始，含结束，end可以小于start,会自动将小值
 str.slice() //截取字串，含开始，含结束，end不可以小于start
-str.substr(start,length)  //截取指定长度的串
+str.substr(start,length)  //截取指定长度的字符串
 ```
 
 ## js的数组的常用的方法
